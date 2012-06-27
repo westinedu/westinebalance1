@@ -1,0 +1,256 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+
+    <title>Spread creative power</title>
+
+
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAA7PD2Bk8rEl0CARr54F_EyhTByyRRtUIisfs80_D6HHdgH4LaVRRAzrQxXu8_V7bmbDykHnYXIpJj6g"
+
+      type="text/javascript"></script>
+
+    <script src="http://code.jquery.com/jquery-1.4.3.min.js" type="text/javascript" charset="utf-8"></script>
+
+
+    <script type="text/javascript">
+
+      GEOCHAT_VARS = {
+
+        'auth_url': 'http://facewcf.appspot.com/_ah/logout?continue=https://www.google.com/accounts/Logout%3Fcontinue%3Dhttp://facewcf.appspot.com/%26service%3Dah',
+
+        'user_email': 'westine@gmail.com',
+
+        'user_nickname': 'westine',
+
+        'default_location': 'Beijing',
+
+        'initial_latitude': '37.4221',
+
+        'initial_longitude': '-122.0837',
+
+        'update_interval': 5000,
+
+        'error_interval': 30000
+
+      };
+
+      GEOCHAT_IMAGES = {
+
+        'marker': '/static/images/marker.png',
+
+        'marker-user': '/static/images/marker-lime.png'
+
+      };
+
+      
+
+    </script>
+
+  </head>
+
+  <body>
+
+  	<script src="http://static.ak.connect.facebook.com/js/api_lib/v0.4/FeatureLoader.js.php" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+  	FB.init("86febf950db1f45552bcc11f1fcfede7", "xd_receiver.htm");     
+
+</script>
+
+
+
+    <div id="container">
+
+      <div id="head">
+
+        <h1><a href="/">	Find your favourite topics around the world and feel free to chat with people who have the same interests !</a></h1>
+
+               <script type="text/javascript">
+
+             $.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags=cat&tagmode=any&format=json&jsoncallback=?",
+
+        function(data){
+
+          $.each(data.items, function(i,item){
+
+            $("<img/>").attr("src", item.media.m).appendTo("#images");
+
+            if ( i == 3 ) return false;
+
+          });
+
+        });
+
+ // var cometCon = new CometDriver();
+
+ 
+
+ BASE_URL="http://api.openapilabs.com/4.0/wcf/gateway"
+
+APIKEY="916d2d8aad6da467e393ee042fa5a838"
+
+URL=BASE_URL + "?apikey=" + APIKEY
+var jsonstr1 = '{"supportedConnectionTypes":"long-polling","channel":"/meta/handshake","version":"1.0"}';
+alert("djsfjdk");
+$.ajax({
+
+  type: 'POST',
+
+  url: URL,
+
+  data: jsonstr1,
+  
+  success: function(msg,status,XMLHttpRequestobject)
+
+  { 
+
+  	alert("success status: " + XMLHttpRequestobject.data);
+  	alert("ajax request: " + msg.clientId + msg.channel);
+  	},
+
+  error:function(msg,status)
+
+  {
+ 	var json = eval('[' + msg + ']');
+   alert(json.d);
+  	alert(msg + "status " + status );
+
+  	alert("ajax error!");
+
+  	},
+
+  dataType: "json",
+
+  contentType: "text/json"
+
+});
+
+
+
+</script>
+
+        <div id="topnav">
+
+          
+
+          <strong>westine@gmail.com</strong> | 
+
+          
+
+          <a href="/help" target="_blank">Help</a> |
+
+          
+
+          <a href="/settings">Settings</a> |
+
+          
+
+          <a href="http://facewcf.appspot.com/_ah/logout?continue=https://www.google.com/accounts/Logout%3Fcontinue%3Dhttp://facewcf.appspot.com/%26service%3Dah">Sign out</a>
+
+        </div>
+
+      </div>
+
+      <div id="body">
+
+        <div id="map"></div>
+
+     
+
+        
+
+        <div id="chat">
+
+    
+
+          <frameset>
+
+            <form id="chatform" action="#" onsubmit="say(this.chat); return false;">
+
+              <input type="text" name="chat" size="100" maxlength="1024" />
+
+              <input type="submit" value="Chat" />
+
+            </form>
+
+          </frameset>
+
+          <form id="moveform" action="#" onsubmit="move(this.address.value); return false;">
+
+            <input type="text" name="address" id="address" size="20" />
+
+            <input type="submit" value="Move" />
+
+          </form>
+
+        </div>
+
+        
+
+         <div id="images">
+
+<script>$.getJSON("http://api.flickr.com/services/feeds/photos_public.gne?tags=building&tagmode=any&format=json&jsoncallback=?",
+
+        function(data){
+
+          $.each(data.items, function(i,item){
+
+            $("<img/>").attr("src", item.media.m).appendTo("#images");
+
+            if ( i == 2 ) return false;
+
+          });
+
+        });</script>
+
+</div>
+
+<div id="fbinvite">
+
+
+
+</div>
+
+        <div id="log">
+
+          <h2>Message Board</h2>
+
+          <div id="log-entries"></div>
+
+          <h2>
+
+	 <fb:login-button size="large" background="white" length="long" autologoutlink="true">
+
+  </fb:login-button>
+
+</h2>
+
+        </div>
+
+        <div id="status">
+
+          
+
+        </div>
+
+      </div>
+
+      <div id="foot">
+
+        &copy;powered by Alcatel-Lucent WCF, facebook, flickr and google map
+
+      </div>
+
+    </div>
+
+  </body>
+
+</html>
